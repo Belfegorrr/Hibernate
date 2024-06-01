@@ -3,31 +3,30 @@
  */
 package br.com.ifernandes.dao;
 
+import br.com.ifernandes.domain.Marca;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import br.com.ifernandes.domain.Curso;
 
 /**
  * 
  */
-public class CursoDao implements ICursoDao {
+public class MarcaDao implements IMarcaDao {
 
 	@Override
-	public Curso cadastrar(Curso curso) {
+	public Marca cadastrar(Marca marca) {
 		EntityManagerFactory entityManagerFactory = 
 				Persistence.createEntityManagerFactory("ExemploJPA");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
-		
+
 		entityManager.getTransaction().begin();
-		entityManager.persist(curso);
+		entityManager.persist(marca);
 		entityManager.getTransaction().commit();
-		 
+
 		entityManager.close();
 		entityManagerFactory.close();
-		
-		
-		return curso;
-	}	
+		return marca;
+	}
 }
